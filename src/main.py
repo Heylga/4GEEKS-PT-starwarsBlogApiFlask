@@ -46,21 +46,21 @@ def get_people():
 
 
 # @app.route('/people/<int:people_id>', methods=['GET'])
-# def get_people():
+# def get_character():
     
    
 #     return jsonify(response_body), 200
 
 
 # @app.route('/planets', methods=['GET'])
-# def get_people():
+# def get_planets():
     
    
 #     return jsonify(response_body), 200
 
 
 # @app.route('/planets/<int:planets_id>', methods=['GET'])
-# def get_people():
+# def get_planet():
     
    
 #     return jsonify(response_body), 200
@@ -68,21 +68,21 @@ def get_people():
 
 
 # @app.route('/starships', methods=['GET'])
-# def get_people():
+# def get_starships():
     
    
 #     return jsonify(response_body), 200
 
     
 # @app.route('/starships/<int:planets_id>', methods=['GET'])
-# def get_people():
+# def get_starship():
     
    
 #     return jsonify(response_body), 200
 
 
 # @app.route('/favourites', methods=['GET'])
-# def get_people():
+# def get_favourites():
     
    
 #     return jsonify(response_body), 200
