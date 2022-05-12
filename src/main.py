@@ -233,11 +233,11 @@ def get_people():
 #     return jsonify(response_body), 200
 
 
-# @app.route('/planets', methods=['GET'])
-# def get_planets():
+@app.route('/planets', methods=['GET'])
+def get_planets():
     
    
-#     return jsonify(response_body), 200
+    return jsonify(planets), 200
 
 
 # @app.route('/planets/<int:planets_id>', methods=['GET'])
