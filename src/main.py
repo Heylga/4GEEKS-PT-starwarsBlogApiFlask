@@ -248,11 +248,11 @@ def get_planets():
 
 
 
-# @app.route('/starships', methods=['GET'])
-# def get_starships():
+@app.route('/starships', methods=['GET'])
+def get_starships():
     
    
-#     return jsonify(response_body), 200
+    return jsonify(starships), 200
 
     
 # @app.route('/starships/<int:planets_id>', methods=['GET'])
