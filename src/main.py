@@ -277,6 +277,18 @@ def get_favourites():
     return jsonify(response_body), 200
 
 
+    
+# @app.route('/people', methods=['GET'])
+# def get_all():
+#     ppl = People.get_all()
+
+#     if people:
+#         people_all = [people.to_dict() for people in ppl]
+   
+#         return jsonify(people), 200
+  
+#   return jsonify('error': "People not found"), 404
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':

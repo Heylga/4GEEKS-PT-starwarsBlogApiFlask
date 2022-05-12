@@ -83,6 +83,9 @@ class Favourites(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.String(120), nullable=False)
     favouritetype = db.Column(db.String(120), nullable=False)
+    # favourite_character = db.Column(db.String(120), db.ForeignKey(Parent.id))
+    # favourite_planet = db.Column(db.String(120), db.ForeignKey(Parent.id))
+    # favourite_starship = db.Column(db.String(120), db.ForeignKey(Parent.id))
     favourite_id = db.Column(db.String(120), nullable=False)
 
     def __repr__(self):
@@ -95,3 +98,9 @@ class Favourites(db.Model):
             "favouritetype": self.favouritetype,
             "favourite_id": self.favourite_id,
         }
+
+
+    @classmethod
+    def get_all(cls):
+        users = cls.query.all()
+        return users
