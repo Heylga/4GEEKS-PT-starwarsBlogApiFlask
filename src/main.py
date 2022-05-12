@@ -270,11 +270,11 @@ def get_starships():
 #     return jsonify(results_from_starships), 200
 
 
-# @app.route('/favourites', methods=['GET'])
-# def get_favourites():
+@app.route('/favourites', methods=['GET'])
+def get_favourites():
     
    
-#     return jsonify(response_body), 200
+    return jsonify(response_body), 200
 
 
 

@@ -17,7 +17,6 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            # do not serialize the password, its a security breach
         }
 
 class People(db.Model):
@@ -39,60 +38,60 @@ class People(db.Model):
             "gender": self.gender,
             "hair_color": self.hair_color,
             "eye_color": self.eye_color,
-            # do not serialize the password, its a security breach
         }
 
 
-    #     class Planets(db.Model):
-    # __tablename__ = 'planets'
+class Planets(db.Model):
+    __tablename__ = 'planets'
 
-    # id = db.Column(db.Integer, primary_key=True)
-    # population = db.Column(db.String(120), nullable=False)
-    # terrain = db.Column(db.String(120), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    population = db.Column(db.String(120), nullable=False)
+    terrain = db.Column(db.String(120), nullable=False)
 
-    # def __repr__(self):
-    #     return '<Planets %r>' % self.name
+    def __repr__(self):
+        return '<Planets %r>' % self.name
 
-    # def serialize(self):
-    #     return {
-    #         "id": self.id,
-    #         "population": self.population,
-    #         "terrain": self.terrain,
-    #         # do not serialize the password, its a security breach
-    #     }
-
-
-    # class Starships(db.Model):
-    # __tablename__ = 'starships'
-
-    # id = db.Column(db.Integer, primary_key=True)
-    # model = db.Column(db.String(120), nullable=False)
-    # manufacturer = db.Column(db.String(120), nullable=False)
-
-    # def __repr__(self):
-    #     return '<Starships %r>' % self.name
-
-    # def serialize(self):
-    #     return {
-    #         "id": self.id,
-    #         "model": self.model,
-    #         "manufacturer": self.manufacturer,
-    #         # do not serialize the password, its a security breach
-    #     }
+    def serialize(self):
+        return {
+            "id": self.id,
+            "population": self.population,
+            "terrain": self.terrain,
+        }
 
 
-    # class Favourites(db.Model):
-    # __tablename__ = 'favourites'
+class Starships(db.Model):
+    __tablename__ = 'starships'
 
-    # id = db.Column(db.Integer, primary_key=True)
-    # favourite_id = db.Column(db.String(120), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    model = db.Column(db.String(120), nullable=False)
+    manufacturer = db.Column(db.String(120), nullable=False)
 
-    # def __repr__(self):
-    #     return '<Favourites %r>' % self.name
+    def __repr__(self):
+        return '<Starships %r>' % self.name
 
-    # def serialize(self):
-    #     return {
-    #         "id": self.id,
-    #         "favourite_id": self.favourite_id,
-    #         # do not serialize the password, its a security breach
-    #     }
+    def serialize(self):
+        return {
+            "id": self.id,
+            "model": self.model,
+            "manufacturer": self.manufacturer,
+        }
+
+
+class Favourites(db.Model):
+    __tablename__ = 'favourites'
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.String(120), nullable=False)
+    favouritetype = db.Column(db.String(120), nullable=False)
+    favourite_id = db.Column(db.String(120), nullable=False)
+
+    def __repr__(self):
+        return '<Favourites %r>' % self.name
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "favouritetype": self.favouritetype,
+            "favourite_id": self.favourite_id,
+        }
