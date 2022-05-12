@@ -25,7 +25,7 @@ people = {
   "message": "ok",
   "total_records": 82,
   "total_pages": 9,
-  "previous": None,
+  "previous": None, 
   "next": "https://www.swapi.tech/api/people?page=2&limit=10",
   "results": [
     {
@@ -226,11 +226,14 @@ def get_people():
     return jsonify(people), 200
 
 
-# @app.route('/people/<int:people_id>', methods=['GET'])
-# def get_character():
-    
+# @app.route('/people/<string:people_uid>', methods=['GET'])
+# def get_character(people_uid):
+#         results_from_people = people["results"]
+#             for element in results_from_people:
+#                 if element["uid"] == people_uid:
+#         return jsonfy(element)   
    
-#     return jsonify(response_body), 200
+#     return jsonify(results_from_people), 200
 
 
 @app.route('/planets', methods=['GET'])
@@ -240,12 +243,14 @@ def get_planets():
     return jsonify(planets), 200
 
 
-# @app.route('/planets/<int:planets_id>', methods=['GET'])
-# def get_planet():
-    
+# @app.route('/planets/<string:planets_uid>', methods=['GET'])
+# def get_planet(planets_uid):
+#         results_from_planets = planets["results"]
+#             for element in results_from_planets:
+#                 if element["uid"] == planets_uid:
+#         return jsonfy(element)   
    
-#     return jsonify(response_body), 200
-
+#     return jsonify(results_from_planets), 200
 
 
 @app.route('/starships', methods=['GET'])
@@ -255,11 +260,14 @@ def get_starships():
     return jsonify(starships), 200
 
     
-# @app.route('/starships/<int:planets_id>', methods=['GET'])
-# def get_starship():
-    
+# @app.route('/starships/<string:starships_uid>', methods=['GET'])
+# def get_starship(starships_uid):
+#         results_from_starships = starships["results"]
+#             for element in results_from_starships:
+#                 if element["uid"] == starships_uid:
+#         return jsonfy(element)   
    
-#     return jsonify(response_body), 200
+#     return jsonify(results_from_starships), 200
 
 
 # @app.route('/favourites', methods=['GET'])
