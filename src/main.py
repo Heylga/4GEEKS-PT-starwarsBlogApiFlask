@@ -225,32 +225,43 @@ def get_people():
    
     return jsonify(people), 200
 
+def get_all_people():
+    all_people = People.get_all_people()
 
-# @app.route('/people/<string:people_uid>', methods=['GET'])
-# def get_character(people_uid):
-#         results_from_people = people["results"]
-#             for element in results_from_people:
-#                 if element["uid"] == people_uid:
-#         return jsonfy(element)   
+    return jsonify(all_people), 200
+
+
+@app.route('/people/<int:uid>', methods = ['GET'])
+def get_character(uid):
    
-#     return jsonify(results_from_people), 200
+    return jsonify(people), 200
+
+def get_character(uid):
+    character = people.get_people(uid)
+    if character is None:
+        return jsonify({"msg":"This character doesn´t exist"})
+    return jsonify(character),200
 
 
 @app.route('/planets', methods=['GET'])
 def get_planets():
-    
-   
     return jsonify(planets), 200
 
+def get_all_planets():
+    all_planets = planets.get_all_planets()
 
-# @app.route('/planets/<string:planets_uid>', methods=['GET'])
-# def get_planet(planets_uid):
-#         results_from_planets = planets["results"]
-#             for element in results_from_planets:
-#                 if element["uid"] == planets_uid:
-#         return jsonfy(element)   
-   
-#     return jsonify(results_from_planets), 200
+    return jsonify(all_planets), 200
+
+
+@app.route('/planets/<int:uid>', methods=['GET'])
+def get_planet(uid):
+    return jsonify(planets), 200
+
+def get_planet(uid):
+    planets= Planets.get_planets(uid)
+    if planets is None:
+        return jsonify({"msg":"This planet doesn´t exist"})
+    return jsonify(planets),200
 
 
 @app.route('/starships', methods=['GET'])
@@ -259,15 +270,21 @@ def get_starships():
    
     return jsonify(starships), 200
 
-    
-# @app.route('/starships/<string:starships_uid>', methods=['GET'])
-# def get_starship(starships_uid):
-#         results_from_starships = starships["results"]
-#             for element in results_from_starships:
-#                 if element["uid"] == starships_uid:
-#         return jsonfy(element)   
-   
-#     return jsonify(results_from_starships), 200
+def get_all_starships():
+    all_starships = starships.get_all_starships()
+
+    return jsonify(all_starships), 200
+
+
+@app.route('/starships/<int:uid>', methods=['GET'])
+def get_starship(uid):
+    return jsonify(starships), 200
+
+def get_starship(uid):
+    starships= Planets.get_starships(uid)
+    if starships is None:
+        return jsonify({"msg":"This planet doesn´t exist"})
+    return jsonify(starships),200
 
 
 @app.route('/favourites', methods=['GET'])
@@ -277,17 +294,7 @@ def get_favourites():
     return jsonify(response_body), 200
 
 
-    
-# @app.route('/people', methods=['GET'])
-# def get_all():
-#     ppl = People.get_all()
 
-#     if people:
-#         people_all = [people.to_dict() for people in ppl]
-   
-#         return jsonify(people), 200
-  
-#   return jsonify('error': "People not found"), 404
 
 
 # this only runs if `$ python src/main.py` is executed
