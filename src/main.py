@@ -212,13 +212,14 @@ def sitemap():
     return generate_sitemap(app)
 
 @app.route('/user', methods=['GET'])
-def handle_hello():
 
-    response_body = {
-        "msg": "Hello, this is your GET /user response "
-    }
+def get_user(email):
+    user = User.get_user(email)
+    if user is None:
+        return jsonify({"msg":"error"})
 
-    return jsonify(response_body), 200
+    return jsonify(user), 200
+
 
 @app.route('/people', methods=['GET'])
 def get_people():
@@ -288,10 +289,81 @@ def get_starship(uid):
 
 
 @app.route('/favourites', methods=['GET'])
-def get_favourites():
+
+def get_all_favourites():
+    favourites = favourites.get_all_favourites()
+    return jsonify(favourites), 200
+
+
+@app.route('/favourites/people/<int:people_uid>', methods=['POST'])
+
+def create_favourites_people():
+    body = request.get_json()
+    if body is None:
+        return {"error": "favourites are empty"}, 400
     
-   
-    return jsonify(response_body), 200
+    new_people = User.get_user(body['new_people'])
+    people_uid = new_people.uid
+
+    people = people.get_people(new_people.uid)
+    people_uid = people.uid
+
+    favourites.create_favourites(user_uid, people_uid)
+
+    return {"message": "favourite character has been added"}, 200
+    
+@app.route('/favourites/planets/<int:planet_uid>', methods=['POST'])
+
+def create_favourites_planets():
+    body = request.get_json()
+    if body is None:
+        return {"error": "favourites are empty"}, 400
+
+    new_planets = User.get_user(body['new_planets'])
+    planets_uid = new_planets.uid
+
+    planets = Planets.get_planet(new_planets.uid)
+    planets_uid = planets.uid
+
+    Favorite.create_favourites(user_uid, planets_uid)
+
+    return {"message": "favourite planet has been added"}, 200
+
+@app.route('/favourites/starships/<int:starships_uid>', methods=['POST'])
+
+def create_favourites_starships():
+    body = request.get_json()
+    if body is None:
+        return {"error": "starships are empty"}, 400
+
+    new_starships = User.get_user(body['new_starships'])
+    starships_uid = new_starships.uid
+
+    starships = starships.get_starships(new_starships.uid)
+    starships_uid = starships.uid
+
+    Favorite.create_favourites(user_uid, starships_uid)
+
+    return {"message": "favourite starship has been added"}, 200
+
+
+@app.route('/favourites/<int:planet_uid>', methods=['DELETE'])
+
+def delete_favourites_planet(favourites_uid,planet_uid):
+    favourites = favourites.delete_favourites_planet(favourites_uid,planet_uid)
+    return jsonify(favorites),200
+
+@app.route('/favourites/<int:people_uid>', methods=['DELETE'])
+
+def delete_favourites_people(favourites_uid,people_uid):
+    favourites = favourites.delete_favourites_people(favourites_uid,people_uid)
+    return jsonify(favourites),200
+
+@app.route('/favourites/<int:starships_uid>', methods=['DELETE'])
+
+def delete_favourites_starships(favourites_uid,starships_uid):
+    favourites = favourites.delete_favourites_people(favourites_uid,people_uid)
+    return jsonify(favourites),200
 
 
 
